@@ -1,0 +1,71 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+body {
+    background: linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)), url('https://images.unsplash.com/photo-1515266591878-f93e32bc5937?ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* this styles the whole [articles] block */
+#root {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* above/ below the [articles] div */
+.marginer {
+    margin-top: 50px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h2{
+    text-align: center;
+    color: white;
+}
+
+/* card stuff */
+h1 {
+    color: white;
+    margin-top: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 550;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+}
+
+
+.card {
+    background-color: rgba(255,255,255,0.001);
+    backdrop-filter: blur(5px);
+    border: 2px solid white;
+    padding: 10px;
+    margin: 15px 15px;
+    position: relative;
+    max-width: 345px;
+    border-radius: 20px;
+}
+
+p {
+      color: lightgrey;
+      font-size: small;
+      margin-top: 0;
+      text-align: center;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+}
+
+
