@@ -4,14 +4,30 @@
         <meta charset="UTF-8">
         <title>News Tab</title>
         <link rel="stylesheet", href="styles.css">
+        <!-- <script src="index.js"></script> -->
     </head>
 
     <body>
+
         <div class="marginer">
             <div><h1>News Tab <h1></div>
-            <div id="root"></div>
-            <script src="index.js"></script>
+            <p><br></p>
+            <div class=card style="text-align:center;  margin: 0 auto; border-color: black;">
+            <div>
+            <input type="text" id="Interest">
+            <input type="button" id="add" value="Add"> 
+            <input type="button" id="remove" value="Remove">  
         </div>
+
+            <p style="text-align:left; color:white;"><br>Your selected interests are: </p>     
+            <p id="interestsList" style="text-align:left; color:white; display: flex;"></p>    
+        </div>
+            <div id="root"></div>
+        
+        </div>   
+        
+    <script src="index.js"></script>    
     </body>
+    
 
 </html>
