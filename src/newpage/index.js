@@ -68,13 +68,26 @@ for(var i=0; i < 10; i++){
 //         console.log(data);
 //     });
     
+
     var interests = [];
 
-    chrome.storage.sync.get(['interests_storage'], function(result){
-        interests = result['interests_storage'];
-        document.getElementById('interestsList').innerHTML = '' + interests.join(', ');
-
-    })
+    
+    try {
+        chrome.storage.local.get(['interests_storage'], function(result){
+            interests = result['interests_storage'];
+            if(result['interests_storage'] !== undefined){
+                document.getElementById('interestsList').innerHTML = '' + interests.join(', ');
+            }
+            else{
+                document.getElementById('interestsList').innerHTML = '';
+                interests = [];
+            }
+        })
+    }
+    catch(err) {
+        interests = [];
+        chrome.storage.local.set({'interests_storage': []});
+    }
 
     document.getElementById('add').onclick = function() {
         
@@ -87,7 +100,7 @@ for(var i=0; i < 10; i++){
 
         document.getElementById('interestsList').innerHTML = '' + interests.join(', ');
 
-        chrome.storage.sync.set({'interests_storage': interests}); 
+        chrome.storage.local.set({'interests_storage': interests}); 
 
     } 
 
@@ -104,7 +117,7 @@ for(var i=0; i < 10; i++){
         }
         document.getElementById('interestsList').innerHTML = '' + interests.join(', ');
 
-        chrome.storage.sync.set({'interests_storage': interests}, function(){
+        chrome.storage.local.set({'interests_storage': interests}, function(){
             console.log(interests);
         });
     }
