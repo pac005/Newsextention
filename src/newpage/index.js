@@ -87,6 +87,16 @@ for(var i=0; i < 10; i++){
         }    
     });
 
+    var input = document.getElementById('Interest');
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById('add').click();
+        }
+    });
+
+
+
     document.getElementById('add').onclick = function() {
         
         var val = document.getElementById('Interest').value;
