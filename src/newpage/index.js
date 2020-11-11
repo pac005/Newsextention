@@ -71,23 +71,16 @@ for(var i=0; i < 10; i++){
 
     var interests = [];
 
-    
-    try {
-        chrome.storage.local.get(['interests_storage'], function(result){
-            interests = result['interests_storage'];
-            if(result['interests_storage'] !== undefined){
-                document.getElementById('interestsList').innerHTML = '' + interests.join(', ');
+    chrome.storage.local.get(['interests_storage'], function(result){
+        interests = result['interests_storage'];
+        if(result['interests_storage'] !== undefined){
+            document.getElementById('interestsList').innerHTML = '' + interests.join(', ');
             }
-            else{
-                document.getElementById('interestsList').innerHTML = '';
-                interests = [];
-            }
-        })
-    }
-    catch(err) {
-        interests = [];
-        chrome.storage.local.set({'interests_storage': []});
-    }
+        else{
+            document.getElementById('interestsList').innerHTML = '';
+            interests = [];
+        }    
+    });
 
     document.getElementById('add').onclick = function() {
         
