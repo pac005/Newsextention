@@ -1,4 +1,5 @@
 
+[2bed173f4257b0d7932c9ee9594caeb1]
 const app = document.getElementById('root');
 //const title = document.createElement('h2')
 //title.textContent = "News Tab"
