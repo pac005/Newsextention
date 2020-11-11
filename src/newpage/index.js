@@ -90,19 +90,26 @@ for(var i=0; i < 10; i++){
     document.getElementById('add').onclick = function() {
         
         var val = document.getElementById('Interest').value;
-        if(interests.indexOf(val) === -1){
-            interests.push(val);
-
-        };
-
         document.getElementById('Interest').value ='';
 
-        console.log(interests);
+        if(val === 'clear'){
+            chrome.storage.local.set({'interests_storage': []});
+            interests = []; 
+            document.getElementById('interestsList').innerHTML = '';
+        }
+        else{    
+            if(interests.indexOf(val) === -1){
+                interests.push(val);
 
-        document.getElementById('interestsList').innerHTML = '' + interests.join(', ');
+            };
 
-        chrome.storage.local.set({'interests_storage': interests}); 
 
+            console.log(interests);
+
+            document.getElementById('interestsList').innerHTML = '' + interests.join(', ');
+
+            chrome.storage.local.set({'interests_storage': interests}); 
+        }
     } 
 
     document.getElementById('remove').onclick = function(){
