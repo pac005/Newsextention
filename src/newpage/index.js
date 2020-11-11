@@ -55,6 +55,8 @@ fetch(proxy_url+"https://gnews.io/api/v4/search?q="+search_key+"&token="+api_key
             const card = document.createElement('div')
             card.setAttribute('class','card')
 
+            console.log(card.height);
+
             const h1 = document.createElement('h1')
             h1.textContent = data.articles[a].title
 
@@ -113,6 +115,9 @@ fetch(proxy_url+"https://gnews.io/api/v4/search?q="+search_key+"&token="+api_key
             chrome.storage.local.set({'interests_storage': []});
             interests = []; 
             document.getElementById('interestsList').innerHTML = '';
+        }
+        else if(val === ''){
+            
         }
         else{    
             // if the input interest isn't in the list, add it
