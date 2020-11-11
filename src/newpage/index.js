@@ -68,6 +68,11 @@ for(var i=0; i < 10; i++){
 //         console.log(data);
 //     });
     
+    // document.getElementById('Interest').onfocus = function (){
+    //     document.getElementById('Interest').value = '';
+    // };
+
+    
 
     var interests = [];
 
@@ -89,6 +94,9 @@ for(var i=0; i < 10; i++){
             interests.push(val);
 
         };
+
+        document.getElementById('Interest').value ='';
+
         console.log(interests);
 
         document.getElementById('interestsList').innerHTML = '' + interests.join(', ');
@@ -108,6 +116,9 @@ for(var i=0; i < 10; i++){
             }
 
         }
+
+        document.getElementById('Interest').value ='';
+
         document.getElementById('interestsList').innerHTML = '' + interests.join(', ');
 
         chrome.storage.local.set({'interests_storage': interests}, function(){
