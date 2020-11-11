@@ -1,5 +1,6 @@
 
-[2bed173f4257b0d7932c9ee9594caeb1]
+[2bed173f4257b0d7932c9ee9594caeb1, eb5129eb7d1d5b118ad0f348cf91d4e2]
+
 const app = document.getElementById('root');
 //const title = document.createElement('h2')
 //title.textContent = "News Tab"
