@@ -1,5 +1,5 @@
 
-[2bed173f4257b0d7932c9ee9594caeb1, eb5129eb7d1d5b118ad0f348cf91d4e2]
+//[2bed173f4257b0d7932c9ee9594caeb1, eb5129eb7d1d5b118ad0f348cf91d4e2]
 
 const app = document.getElementById('root');
 //const title = document.createElement('h2')
@@ -49,6 +49,9 @@ fetch(proxy_url+"https://gnews.io/api/v4/search?q="+search_key+"&token="+api_key
             // here, we make divs and classes and other stuff like that
             console.log(data.articles[a])
 
+            const link = document.createElement('a');
+            link.setAttribute('href', data.articles[a].url);
+
             const card = document.createElement('div')
             card.setAttribute('class','card')
 
@@ -59,7 +62,8 @@ fetch(proxy_url+"https://gnews.io/api/v4/search?q="+search_key+"&token="+api_key
             data.articles[a].description = data.articles[a].description.substring(0,300) //limit 300 char
             p.textContent = data.articles[a].description
 
-            container.appendChild(card)
+            container.appendChild(link)
+            link.appendChild(card)
 
             card.appendChild(h1)
             card.appendChild(p)
