@@ -114,23 +114,31 @@ for(var i=0; i < 10; i++){
 
     document.getElementById('remove').onclick = function(){
         var val = document.getElementById('Interest').value;
-        if(interests.indexOf(val) !== -1){
-            index = interests.indexOf(val);
-            for(var i = 0; i < interests.length; i++){
-                if(i === index ){
-                    interests.splice(i, 1);
-                }
-            }
-
-        }
-
         document.getElementById('Interest').value ='';
 
-        document.getElementById('interestsList').innerHTML = '' + interests.join(', ');
+        if(val === 'clear'){
+            chrome.storage.local.set({'interests_storage': []});
+            interests = []; 
+            document.getElementById('interestsList').innerHTML = '';
+        }
+        else{
+            if(interests.indexOf(val) !== -1){
+                index = interests.indexOf(val);
+                for(var i = 0; i < interests.length; i++){
+                    if(i === index ){
+                        interests.splice(i, 1);
+                    }
+                }
 
-        chrome.storage.local.set({'interests_storage': interests}, function(){
-            console.log(interests);
-        });
+            }
+
+
+            document.getElementById('interestsList').innerHTML = '' + interests.join(', ');
+
+            chrome.storage.local.set({'interests_storage': interests}, function(){
+                console.log(interests);
+            });
+        }
     }
 
 // chrome.storage.sync.set({'myLine': "hey"}, function(){alert("hey");});
