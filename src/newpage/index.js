@@ -126,50 +126,72 @@ app.appendChild(container);
     }
 
 
-// actual API calls and stuff.
+//console.log(interests);
+
 
 
 var proxy_url = ''
 //var proxy_url = 'https://cors-anywhere.herokuapp.com/';
 var api_key = 'eb5129eb7d1d5b118ad0f348cf91d4e2'; //[2bed173f4257b0d7932c9ee9594caeb1, 50133504342eec6f606a6fb3f21dac07]
 var search_key = 'software';
-fetch(proxy_url+"https://gnews.io/api/v4/search?q="+search_key+"&token="+api_key+"&lang=en"+"&country=us")
-//example: fetch('https://cors-anywhere.herokuapp.com/https://gnews.io/api/v4/search?q=software&token=50133504342eec6f606a6fb3f21dac07')
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        for (var a in data.articles) {
-            // here, we make divs and classes and other stuff like that
-            console.log(data.articles[a])
 
-            const card = document.createElement('div')
-            card.setAttribute('class','card')
-            // card.setAttribute('id', 'p2')
+var inter = []
+getstorage();
 
-
-            const link = document.createElement('a');
-            link.setAttribute('href', data.articles[a].url);
-
-            const h1 = document.createElement('h1')
-            h1.textContent = data.articles[a].title
-
-            const p = document.createElement('p')
-            data.articles[a].description = data.articles[a].description.substring(0,300) //limit 300 char
-            p.textContent = data.articles[a].description
-
-            container.appendChild(card)
-            card.appendChild(link)
-
-            link.appendChild(h1)
-            link.appendChild(p)
+function getstorage(){
+    chrome.storage.local.get(['interests_storage'], function(result){
+        //console.log(result)
+        inter = result
+        console.log(inter)
+    });
+    
+    for (b in inter){
+        console.log(b);
+        apicall(3,b);
+    }
+}
 
 
-        }
+function apicall(num, key) {
+    fetch(proxy_url+"https://gnews.io/api/v4/search?q="+key+"&token="+api_key+"&lang=en"+"&country=us")
+    //example: fetch('https://cors-anywhere.herokuapp.com/https://gnews.io/api/v4/search?q=software&token=50133504342eec6f606a6fb3f21dac07')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            
+            data.articles.forEach(function(a,i) {
+                if(i < num) {
+                    // here, we make divs and classes and other stuff like that
+                    console.log(data.articles[a])
+
+                    const card = document.createElement('div')
+                    card.setAttribute('class','card')
+                    // card.setAttribute('id', 'p2')
+
+                    const link = document.createElement('a');
+                    link.setAttribute('href', data.articles[a].url);
+
+                    const h1 = document.createElement('h1')
+                    h1.textContent = data.articles[a].title
+
+                    const p = document.createElement('p')
+                    data.articles[a].description = data.articles[a].description.substring(0,300) //limit 300 char
+                    p.textContent = data.articles[a].description
+
+                    container.appendChild(card)
+                    card.appendChild(link)
+
+                    link.appendChild(h1)
+                    link.appendChild(p)
+
+                }
+            });
             //console.log(articles.title)
 
-        console.log(data);
-    });
+            console.log(data);
+        });
+}
 
 
 
