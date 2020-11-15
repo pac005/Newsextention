@@ -125,6 +125,7 @@ app.appendChild(container);
         }
     }
 
+// chrome.storage.sync.set({'myLine': "hey"}, function(){alert("hey");});
 
 //console.log(interests);
 
@@ -132,7 +133,7 @@ app.appendChild(container);
 
 var proxy_url = ''
 //var proxy_url = 'https://cors-anywhere.herokuapp.com/';
-var api_key = 'eb5129eb7d1d5b118ad0f348cf91d4e2'; //[2bed173f4257b0d7932c9ee9594caeb1, 50133504342eec6f606a6fb3f21dac07]
+var api_key = 'eb5129eb7d1d5b118ad0f348cf91d4e2';
 var search_key = 'software';
 
 var inter = []
@@ -141,14 +142,14 @@ getstorage();
 function getstorage(){
     chrome.storage.local.get(['interests_storage'], function(result){
         //console.log(result)
-        inter = result
-        console.log(inter)
+
+        console.log(result) 
+
+        for (b in result.interests_storage){
+            console.log(result.interests_storage[b]);
+            apicall(3,result.interests_storage[b]);
+        }
     });
-    
-    for (b in inter){
-        console.log(b);
-        apicall(3,b);
-    }
 }
 
 
@@ -159,25 +160,25 @@ function apicall(num, key) {
             return response.json();
         })
         .then(function (data) {
-            
+            //console.log(data.articles) 
             data.articles.forEach(function(a,i) {
                 if(i < num) {
                     // here, we make divs and classes and other stuff like that
-                    console.log(data.articles[a])
-
+                    //console.log(data.articles[a])
+                    console.log(a)
                     const card = document.createElement('div')
                     card.setAttribute('class','card')
                     // card.setAttribute('id', 'p2')
 
                     const link = document.createElement('a');
-                    link.setAttribute('href', data.articles[a].url);
+                    link.setAttribute('href', a.url);
 
                     const h1 = document.createElement('h1')
-                    h1.textContent = data.articles[a].title
+                    h1.textContent = a.title
 
                     const p = document.createElement('p')
-                    data.articles[a].description = data.articles[a].description.substring(0,300) //limit 300 char
-                    p.textContent = data.articles[a].description
+                    a.description = a.description.substring(0,300) //limit 300 char
+                    p.textContent = a.description
 
                     container.appendChild(card)
                     card.appendChild(link)
