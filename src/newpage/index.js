@@ -125,6 +125,7 @@ app.appendChild(container);
         }
     }
 
+// chrome.storage.sync.set({'myLine': "hey"}, function(){alert("hey");});
 
 //console.log(interests);
 
@@ -132,7 +133,7 @@ app.appendChild(container);
 
 var proxy_url = ''
 //var proxy_url = 'https://cors-anywhere.herokuapp.com/';
-var api_key = 'eb5129eb7d1d5b118ad0f348cf91d4e2'; //[2bed173f4257b0d7932c9ee9594caeb1, 50133504342eec6f606a6fb3f21dac07]
+var api_key = 'eb5129eb7d1d5b118ad0f348cf91d4e2';
 var search_key = 'software';
 
 var inter = []
