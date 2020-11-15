@@ -142,14 +142,14 @@ getstorage();
 function getstorage(){
     chrome.storage.local.get(['interests_storage'], function(result){
         //console.log(result)
-        inter = result
-        console.log(inter)
+
+        console.log(result) 
+
+        for (b in result.interests_storage){
+            console.log(result.interests_storage[b]);
+            apicall(3,result.interests_storage[b]);
+        }
     });
-    
-    for (b in inter){
-        console.log(b);
-        apicall(3,b);
-    }
 }
 
 
@@ -160,25 +160,25 @@ function apicall(num, key) {
             return response.json();
         })
         .then(function (data) {
-            
+            //console.log(data.articles) 
             data.articles.forEach(function(a,i) {
                 if(i < num) {
                     // here, we make divs and classes and other stuff like that
-                    console.log(data.articles[a])
-
+                    //console.log(data.articles[a])
+                    console.log(a)
                     const card = document.createElement('div')
                     card.setAttribute('class','card')
                     // card.setAttribute('id', 'p2')
 
                     const link = document.createElement('a');
-                    link.setAttribute('href', data.articles[a].url);
+                    link.setAttribute('href', a.url);
 
                     const h1 = document.createElement('h1')
-                    h1.textContent = data.articles[a].title
+                    h1.textContent = a.title
 
                     const p = document.createElement('p')
-                    data.articles[a].description = data.articles[a].description.substring(0,300) //limit 300 char
-                    p.textContent = data.articles[a].description
+                    a.description = a.description.substring(0,300) //limit 300 char
+                    p.textContent = a.description
 
                     container.appendChild(card)
                     card.appendChild(link)
