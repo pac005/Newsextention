@@ -1,6 +1,6 @@
 # NewsExtention
 
-## CS 321 Group 1
+## CS 321 Section 001 Group 1
 ### Members:
 * Thomas Benoit
 * Robbie Hume
