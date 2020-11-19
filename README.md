@@ -18,7 +18,8 @@
 1. Type words in the text field that you would like to read news articles about one after another
 2. Reload the page
 3. The articles related to your interests will show up on the tiles below
-4. Clicking on the tile will take you the original source
+4. Clicking on the tile will take you the original source  
+_note: please do not enter more than a few keywords and do not reload more than a few times. This will use up our free API keys for the day and you will have to wait until tomorrow for the extension to work._
 
 ---
 
