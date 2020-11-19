@@ -7,12 +7,18 @@
 * Deepak Rayapati
 * Tai Bui Bui
 
-## How to set up this extension in developer mode
-1. open extensions in chrome
-2. make sure "developer mode" is on in the top right
-3. click "load unpacked" and select /src/ directory from forked repo
+## How to set up this extension
+1. Open Chrome -> Customize and control Google Chrome -> More tools -> Extensions
+2. Enable Developer mode
+3. Extract the GitHub files 
+4. click "load unpacked" and select the src folder from the downloaded folder
+5. Opening a new tab will open the news tab
 
-* remember to hit the reload button on this page after making changes
+## Running the extension
+1. Type words in the text field that you would like to read news articles about one after another
+2. Reload the page
+3. The articles related to your interests will show up on the tiles below
+4. Clicking on the tile will take you the original source
 
 ---
 
