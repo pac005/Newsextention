@@ -1,4 +1,4 @@
-// style testing without using API calls every refresh :)
+// style testing without using API calls every refresh
 
 // for(var i=0; i < 10; i++){
 
